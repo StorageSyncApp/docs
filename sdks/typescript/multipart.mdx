@@ -1,0 +1,43 @@
+---
+title: "Multipart Uploads"
+description: "Uploading bigger files to StorageSync"
+icon: "files"
+---
+
+## Example
+
+```ts index.ts
+const KEY = "list-of-cats.txt";
+
+const uploadId = await client.createMultipartUpload({
+  key: KEY,
+  contentType: "text/plain",
+});
+
+let chunkCount = 1;
+const CHUNK_SIZE = 10 * 1024 * 1024;
+const uploadedParts: Array<{ partNumber: number; etag: string }> = [];
+const stream = fs.createReadStream("./list-of-cats.txt", {
+  highWaterMark: CHUNK_SIZE,
+});
+
+for await (const data of stream) {
+  const etag = await client.uploadPart({
+    key: KEY,
+    uploadId: uploadId,
+    partNumber: chunkCount,
+    data,
+  });
+
+  if (etag) {
+    uploadedParts.push({ partNumber: chunkCount, etag });
+    chunkCount++;
+  }
+}
+
+const finished = await client.completeMultipartUpload({
+  key: KEY,
+  parts: uploadedParts,
+  uploadId: uploadId,
+});
+```

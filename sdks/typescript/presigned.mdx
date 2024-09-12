@@ -1,0 +1,67 @@
+---
+title: "Presigned Urls"
+description: "Presigned Urls to upload files to StorageSync"
+icon: "shield"
+---
+
+This step assumes you have followed the [installation](/sdks/typescript/installation) steps and initialized the client.
+
+## Why Presigned Urls?
+
+Very rarely should you allow users to download or upload files from/to your bucket directly. This is because it is a security risk and can lead to malicious users accessing your bucket.
+
+Instead, you should use a _presigned_ urls. Presigned urls are valid for a limited time and can be used to download or upload files.
+
+## Create a Presigned Url using the StorageSyncClient
+
+The example belows shows how we would create a presigned url for an object called list-of-cats.txt. This assumes the object exists in the root of your bucket.
+
+## (Download) Create a Presigned Url using the SDK to Download a file.
+
+```ts index.ts
+import { StorageSyncClient } from "@storagesync/client";
+
+export async function getPresignedUrl() {
+  const client = new StorageSyncClient({
+    apiKey: "<YOUR_API_KEY>",
+    bucket: "<YOUR_BUCKET_NAME>",
+  });
+
+  const url = await client.sign({
+    key: "list-of-cats.txt",
+    method: "GET",
+    expires: 60 * 60, // Expires in 1 hour
+  });
+
+  return url;
+}
+```
+
+Now the url can be used to allow users to download a file.
+
+Check out our guides/examples to see how you could use this url in your application.
+
+## (Upload) Create a Presigned Url using the SDK to Upload a file.
+
+```ts index.ts
+import { StorageSyncClient } from "@storagesync/client";
+
+export async function putPresignedUrl() {
+  const client = new StorageSyncClient({
+    apiKey: "<YOUR_API_KEY>",
+    bucket: "<YOUR_BUCKET_NAME>",
+  });
+
+  const url = await client.sign({
+    key: "list-of-cats.txt",
+    method: "PUT",
+    expires: 60 * 60, // Expires in 1 hour
+  });
+
+  return url;
+}
+```
+
+Now the url can be used to allow users to upload a file.
+
+Check out our guides/examples to see how you could use this url in your application.

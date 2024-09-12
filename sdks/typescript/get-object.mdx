@@ -33,3 +33,35 @@ fs.writeFileSync("list-of-cats.txt", data);
 
 // Now there should be a file called list-of-cats.txt in the current directory.
 ```
+
+## Examples
+
+Below is an example of how we would use streams to download a big file without having to load it all into memory.
+
+```ts index.ts
+async function downloadBigFile() {
+  // Fetch the file from StorageSync
+  const res = await client.download("big-file.dmg");
+  if (res.status === 200) {
+    // File was was found and we can start streaming it.
+
+    // Create a write stream to a file on our local machine.
+    const writer = fs.createWriteStream("./big-file.dmg");
+
+    // Get the readable stream from the response.
+    const reader = res.body.getReader();
+    if (reader) {
+      while (true) {
+        // Read from the stream.
+        const { done, value } = await reader.read();
+        if (done || !value) {
+          reader.releaseLock();
+          break;
+        }
+        writer.write(value);
+      }
+    }
+    writer.close();
+  }
+}
+```

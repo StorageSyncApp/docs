@@ -1,0 +1,70 @@
+---
+title: "List Files"
+description: "List files in a bucket"
+icon: "list"
+---
+
+This step assumes you have followed the [installation](/sdks/typescript/installation) steps and initialized the client.
+
+The example belows shows how we would list files in a bucket.
+
+```ts index.ts
+import { StorageSyncClient } from "@storagesync/client";
+
+const client = new StorageSyncClient({
+  apiKey: "<YOUR_API_KEY>",
+  bucket: "<YOUR_BUCKET_NAME>",
+});
+
+const response = await client.listFiles({
+  prefix: "" // Optional parameter to filter files by a folder
+  limit: 100 // Optional parameter to limit the number of files returned, defaults to 1000,
+  nextPageToken: "" // Optional parameter to get the next page of files if the api returns hasMore = true
+});
+
+```
+
+### Parameters
+
+| Property      | Description                                                                        |
+| ------------- | ---------------------------------------------------------------------------------- |
+| prefix        | Optional paramter to filter files by a folder                                      |
+| limit         | Optional parameter to limit the number of files returned, defaults to 1000         |
+| nextPageToken | Optional parameter to get the next page of files if the api returns hasMore = true |
+
+### Example Response
+
+```json
+{
+  "bucket": "my-bucket",
+  "files": [
+    {
+      "key": "list-of-cats.txt",
+      "size": 10, // Size in bytes
+      "lastModified": "2023-01-01T00:00:00.000Z",
+      "etag": "1234567890"
+    }
+  ],
+  "hasMore": true,
+  "prefix": "",
+  "limit": 100,
+  "nextPageToken": "1234567890"
+}
+```
+
+```ts
+// Response Type:
+type ListFilesResponse = {
+  bucket: string;
+  files: Array<{
+    key: string;
+    size: number;
+    lastModified: string;
+    etag: string;
+  }>;
+  hasMore: boolean;
+  prefix: string;
+  limit: number;
+  nextPageToken?: string;
+};
+```
