@@ -1,0 +1,51 @@
+---
+title: "Installation"
+description: "Installation instructions for the Typescript SDK"
+---
+
+## Installation
+
+The StorageSync Node.js client provides a simple and efficient way to interact with your StorageSync buckets directly from your Node.js applications. This client abstracts away the complexities of our API, allowing you to easily upload, download, and manage files in your StorageSync buckets.
+
+[https://www.npmjs.com/package/@storagesync/client](https://www.npmjs.com/package/@storagesync/client)
+
+## Installation
+
+Requires Node.js 18.0.0 or higher.
+
+To get started with the StorageSync Javascript client, you'll need to install it in your project. You can do this using npm, yarn, pnpm or bun.
+
+<Tabs items={["npm", "yarn", "pnpm", "bun"]}>
+  <Tab title="npm" value="npm">
+    ```npm install @storagesync/client```
+  </Tab>
+  <Tab title="yarn" value="yarn">
+    ```yarn add @storagesync/client```
+  </Tab>
+  <Tab title="pnpm" value="pnpm">
+    ```pnpm add @storagesync/client```
+  </Tab>
+  <Tab title="bun" value="bun">
+    ```bun add @storagesync/client```
+  </Tab>
+</Tabs>
+
+## Initializing the Client
+
+To initialize the client with your access key and secret key, you can use the following code:
+
+```ts index.ts
+import { StorageSyncClient } from "@storagesync/client";
+
+const client = new StorageSyncClient({
+  apiKey: "<YOUR_API_KEY>",
+  bucket: "<YOUR_BUCKET_NAME>",
+});
+```
+
+To find your access key and secret key, you can follow these steps:
+
+1. Log in to your StorageSync account.
+2. Navigate to your bucket.
+3. Click on settings.
+4. There you should see your bucket name and secret access key.

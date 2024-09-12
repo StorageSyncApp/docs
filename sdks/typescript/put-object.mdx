@@ -1,0 +1,38 @@
+---
+title: "Upload"
+description: "Upload a file to StorageSync"
+icon: "upload"
+---
+
+This step assumes you have followed the [installation](/sdks/typescript/installation) steps and initialized the client.
+
+### Presigned Urls
+
+If you are looking for a way to allow users to upload objects directly to your bucket, you should check out [Put Object with Presigned url](/sdks/typescript/presigned-url)
+
+### File size over 100mb
+
+Generally if you are uploading a file over 100mb, you should consider using [Multipart Uploads](/sdks/typescript/multipart-uploads)
+
+## Upload an Object using the StorageSyncClient
+
+The example belows shows how we would upload an object called list-of-cats.txt to our buckets.
+
+```ts index.ts
+import { StorageSyncClient } from "@storagesync/client";
+import fs from "fs";
+
+const client = new StorageSyncClient({
+  apiKey: "<YOUR_API_KEY>",
+  bucket: "<YOUR_BUCKET_NAME>",
+});
+
+const data = fs.readfileSync("list-of-cats.txt");
+
+await client.putObject({
+  key: `list-of-cats.txt`,
+  data: data,
+});
+
+// Now there should be a file called list-of-cats.txt in your bucket.
+```

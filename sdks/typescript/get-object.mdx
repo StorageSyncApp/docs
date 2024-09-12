@@ -1,0 +1,35 @@
+---
+title: "Download / Get file"
+description: "Download / Get file from StorageSync"
+icon: "download"
+---
+
+This step assumes you have followed the [installation](/sdks/typescript/installation) steps and initialized the client.
+
+### Presigned Urls
+
+If you are looking for a way to allow external users to download objects from your bucket, you should check out [Get object with presigned url](/sdks/typescript/presigned-url)
+
+## Get an Object using the StorageSyncClient
+
+The example belows shows how we would get an object/file called list-of-cats.txt and save it to a file called list-of-cats.txt.
+
+```ts index.ts
+import { StorageSyncClient } from "@storagesync/client";
+import fs from "fs";
+
+const client = new StorageSyncClient({
+  apiKey: "<YOUR_API_KEY>",
+  bucket: "<YOUR_BUCKET_NAME>",
+});
+
+const response = await client.download("list-of-cats.txt");
+// The response will be a standard fetch response object
+// with the body being the data for the object.
+
+const data = await response.text();
+
+fs.writeFileSync("list-of-cats.txt", data);
+
+// Now there should be a file called list-of-cats.txt in the current directory.
+```

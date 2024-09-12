@@ -1,0 +1,102 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Starter Kit",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#FACC15",
+    "light": "#ffe47b",
+    "dark": "#FACC15",
+    "anchors": {
+      "from": "#FACC15",
+      "to": "#ffe47b"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:hello@storagesync.app"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://storagesync.app/dashboard"
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Documentation",
+      "icon": "book-open-cover",
+      "url": "https://docs.storagesync.app"
+    },
+    {
+      "name": "Community",
+      "icon": "slack",
+      "url": "https://storagesync.app/community"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://storagesync.app/blog"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": ["introduction", "concepts", "quickstart", "development"]
+    },
+    {
+      "group": "SDKS",
+      "pages": [
+        {
+          "group": "Typescript / Javascript",
+          "icon": "js",
+          "pages": [
+            "sdks/typescript/installation",
+            "sdks/typescript/put-object",
+            "sdks/typescript/get-object"
+          ]
+        },
+        "sdks/python",
+        "sdks/go",
+        "sdks/php"
+      ]
+    },
+    {
+      "group": "Essentials",
+      "pages": [
+        "essentials/markdown",
+        "essentials/code",
+        "essentials/images",
+        "essentials/settings",
+        "essentials/navigation",
+        "essentials/reusable-snippets"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Endpoint Examples",
+      "pages": [
+        "api-reference/endpoint/get",
+        "api-reference/endpoint/create",
+        "api-reference/endpoint/delete"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "x": "https://x.com/storagesyncapp",
+    "github": "https://github.com/storagesyncapp",
+    "linkedin": "https://www.linkedin.com/company/storagesyncapp"
+  }
+}
