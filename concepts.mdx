@@ -4,3 +4,31 @@ description: "Some concepts to understand StorageSync"
 ---
 
 ## Bucket
+
+A bucket is a container for storing files. You can think of it as a drive in your computer. Files are stored in buckets and can be accessed by users with the correct permissions.
+
+## Object
+
+An object is a **file** stored in a bucket. Objects can be accessed by users with the correct permissions.
+
+## Key
+
+A key is a unique identifier for an object. It is used to identify the object in the bucket. Keys are case-sensitive and can contain any character except the forward slash (/).
+
+Example: A file called list-of-cats.txt located in a folder called cats would have the key `cats/list-of-cats.txt`.
+
+## ETag
+
+An ETag is a unique identifier for an object. It is used to verify that the object has not been modified since it was last downloaded.
+
+## Multipart Upload
+
+A multipart upload is a process that allows you to upload a file in smaller parts. This is useful when uploading large files as it allows you to upload the file in chunks, reducing the amount of data that needs to be transferred with each request.
+
+## Part
+
+A part is a part of a multipart upload. It is a chunk of the file that is uploaded to StorageSync.
+
+## Presigned Url
+
+Presigned Urls are a way to allow users to download or upload files directly from/to your bucket. They are valid for a limited time and can be used to download or upload files.

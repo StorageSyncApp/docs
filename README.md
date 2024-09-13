@@ -1,32 +1,22 @@
-# Mintlify Starter Kit
+# StorageSync Docs
 
-Click on `Use this template` to copy the Mintlify starter kit. The starter kit contains examples including
+[Docs](https://docs.storagesync.app) | [API Reference](https://docs.storagesync.app/api-reference) | [Dashboard](https://storagesync.app/dashboard)
 
-- Guide pages
-- Navigation
-- Customizations
-- API Reference pages
-- Use of popular components
+## What is StorageSync?
 
-### Development
+StorageSync is a simple, powerful cloud storage solution built on Cloudflare's global network. Our service simplifies bucket creation, file management, and team collaboration, allowing you to focus on building great products instead of wrestling with complex storage systems.
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the documentation changes locally. To install, use the following command
+## Why StorageSync?
 
-```
-npm i -g mintlify
-```
+- **Simplicity**: Create buckets and upload files with just a few clicks or API calls.
+- **Speed**: Leverage Cloudflare's worldwide CDN for lightning-fast content delivery.
+- **Integration**: Easily connect with Slack and/or set up webhooks for automated workflows.
 
-Run the following command at the root of your documentation (where mint.json is)
+## Getting Started
 
-```
-mintlify dev
-```
+Whether you're a solo developer or part of a large team, getting started with StorageSync is quick and easy:
 
-### Publishing Changes
-
-Install our Github App to auto propagate changes from your repo to your deployment. Changes will be deployed to production automatically after pushing to the default branch. Find the link to install on your dashboard. 
-
-#### Troubleshooting
-
-- Mintlify dev isn't running - Run `mintlify install` it'll re-install dependencies.
-- Page loads as a 404 - Make sure you are running in a folder with `mint.json`
+1. [Sign up for an account](https://storagesync.app/login)
+2. Create your first team
+3. Create your first bucket
+4. Upload your files using our SDK, API or the web interface
